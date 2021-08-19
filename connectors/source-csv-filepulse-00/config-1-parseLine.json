@@ -1,0 +1,21 @@
+{
+  "connector.class":"io.streamthoughts.kafka.connect.filepulse.source.FilePulseSourceConnector",
+  "fs.scan.directory.path":"/tmp/kafka-connect/examples/",
+  "fs.scan.interval.ms":"10000",
+  "fs.scan.filters":"io.streamthoughts.kafka.connect.filepulse.scanner.local.filter.RegexFileListFilter",
+  "file.filter.regex.pattern":".*\\.csv$",
+  "task.reader.class": "io.streamthoughts.kafka.connect.filepulse.reader.RowFileInputReader",
+  "offset.strategy":"name",
+  "skip.headers": "1",
+  "topic":"topic-filepulse-csv-00",
+  "internal.kafka.reporter.bootstrap.servers": "broker:29092",
+  "internal.kafka.reporter.topic":"connect-file-pulse-status",
+  "fs.cleanup.policy.class": "io.streamthoughts.kafka.connect.filepulse.clean.LogCleanupPolicy",
+  "tasks.max": 1,
+
+  "filters":"ParseLine",
+  "filters.ParseLine.extractColumnName": "headers",
+  "filters.ParseLine.trimColumn": "true",
+  "filters.ParseLine.separator": ";",
+  "filters.ParseLine.type": "io.streamthoughts.kafka.connect.filepulse.filter.DelimitedRowFilter"
+}
